@@ -3,9 +3,14 @@ import mongoose from 'mongoose';
 import multer from 'multer';
 import path from 'path';
 import cors from 'cors';
+import { fileURLToPath } from "url";
+import cookieParser from "cookie-parser"
+import bodyParser from 'body-parser';
+import userRoutes from './routes/user.js';
 
 /*CONFIGURATION*/
 const app = express();
+const PORT = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
@@ -35,6 +40,7 @@ const upload = multer({storage});
 
 /*ROUTES */
 app.use(express.json());
+app.use('/user', userRoutes);
 
 /*DATABASE CONNECTION*/
-mongoose.connect('mongodb+srv://VenessaChebukwa:Romulemia01@cluster0.hq8psm1.mongodb.net/MytumbaEcommerce?retryWrites=true&w=majority').then(()=> app.listen(5000)).then(()=>console.log("Connected to database and listening on port 5000"));
+mongoose.connect('mongodb+srv://vanessachebukwa:LcYobFsc3j0h2iU5@cluster0.emj8zgg.mongodb.net/?retryWrites=true&w=majority').then(()=> app.listen(PORT)).then(()=>console.log(`Connected to database and listening on port ${PORT}`));
