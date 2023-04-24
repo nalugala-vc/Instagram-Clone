@@ -9,7 +9,11 @@ class SplashScreen extends StatelessWidget {
       body: Column(
         children: [
           Center(
-            child: Image.asset('assets/instalogo.png'),
+            child: Image.asset(
+              'assets/instalogo.png',
+              height: 200,
+              width: 200,
+            ),
           ),
           Column(
             children: [
@@ -17,7 +21,11 @@ class SplashScreen extends StatelessWidget {
                 'from',
                 style: TextStyle(color: Colors.grey),
               ),
-              Image.asset('assets/meta.png'),
+              Image.asset(
+                'assets/meta.png',
+                height: 50,
+                width: 100,
+              ),
             ],
           ),
         ],
